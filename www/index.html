@@ -8,12 +8,36 @@
         window.APIfetch = receiverWindow.fetch;
         // same thing, you may as well replace window.XMLHttpRequest
         window.APIXMLHttpRequest = receiverWindow.XMLHttpRequest;
+
+        var fooHeaders = new Headers({
+            "X-Custom-Header": "ProcessThisImmediately",
+        });
+
+        var initFoo = { method: 'GET',
+                        headers:fooHeaders,
+                        mode: 'cors',
+                        cache: 'default' };
+
+        var fooRequest = new Request('http://api.sue.com:4500/health', initFoo);
+        receiverWindow.fetch(fooRequest).then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            console.log(json);
+        });
+
+        fetch(fooRequest).then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            console.log('regular fetch???? ', json);
+        });
     }
 </script>
+
 <iframe id="receiver" 
         src="http://api.sue.com:4500/receiver" 
         style="position:absolute;left:-9999px"
         onload="window.setupAPI()"></iframe>
+
 </body>
 <p> secret iframe</p>
 
