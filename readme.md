@@ -2,7 +2,7 @@ OH HAI.
 
 This requires that you have docker installed and docker-machine cli.
 
-I believe you still need to create the docker container, which I didn't add to that readme
+I believe you still need to create the docker container, which I didn't add to the api readme
 `docker-machine create dev2 --driver virtualbox --virtualbox-disk-size "5000" --virtualbox-cpu-count 2 --virtualbox-memory "4112"`
 then run:
 `docker-machine env dev2`
